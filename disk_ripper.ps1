@@ -2,6 +2,7 @@ Import-Module -Name PoSHue
 
 $HUE_API_KEY = <YOUR HUE API KEY>
 $HUE_IP = <YOUR HUE IP>
+$HUE_ROOM = <THE ROOM WHERE THE LIGHTS WILL FLASH>
 
 $MIN_TITLE_LENGTH = 900
 $OUTPUT_DIR = <YOUR OUTPUT DIRECTORY>
@@ -54,7 +55,7 @@ function FlashLights {
 }
 
 Write-Output "Starting"
-$ActiveGroup = [HueGroup]::New("Kjellerstue", $HUE_IP, $HUE_API_KEY)
+$ActiveGroup = [HueGroup]::New($HUE_ROOM, $HUE_IP, $HUE_API_KEY)
 
 
 if ((Get-WMIObject -Class Win32_CDROMDrive -Property *).MediaLoaded -eq $False) {
